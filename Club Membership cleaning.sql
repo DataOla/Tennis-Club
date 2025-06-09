@@ -1,12 +1,12 @@
 SELECT *
 FROM member_info;
 
---- renaming a column with a spelling error ---
+--- renamed a column with a spelling error ---
 
 ALTER TABLE member_info
 RENAME COLUMN martial_status to marital_status;
 
---- created a staging table avoid altering the raw data ---
+--- created a staging table to avoid altering the raw data ---
 
 CREATE TABLE member_info_staging
 LIKE member_info;
@@ -92,10 +92,6 @@ SELECT *
 FROM name_dup
 WHERE row_num2 > 1;
 
-SELECT *
-FROM member_info_staging2
-WHERE full_name LIKE 'Haskell Braden';
-
 SELECT DISTINCT(phone)
 FROM member_info_staging2;
 
@@ -125,7 +121,7 @@ SET marital_status = TRIM(marital_status),
     job_title = TRIM(job_title)
     ;
     
---- fixing the error in the full_name colun ---
+--- fixing the error in the full_name column ---
 
 SELECT *
 FROM member_info_staging2
@@ -176,7 +172,7 @@ SET membership_date = STR_TO_DATE(membership_date, '%m/%d/%Y');
 ALTER TABLE member_info_staging2
 MODIFY membership_date DATE;
 
---- Some dates in the membership_date column are in the 1900s so I am updating the dates by adding 100 years ---
+--- Some dates in the membership_date column are in the 1900s so I updated the dates by adding 100 years ---
 
 SELECT *
 FROM member_info_staging2
@@ -186,7 +182,7 @@ UPDATE member_info_staging2
 SET membership_date = DATE_ADD(membership_date, INTERVAL 100 YEAR)
 WHERE YEAR(membership_date) < 2000;
 
---- Some ages have an additional digit at the end so I removed the last digit
+--- Some entries in the age column have an additional digit at the end, so I removed the last digits ---
 
 SELECT *
 FROM member_info_staging
@@ -204,12 +200,12 @@ FROM member_info_staging2;
 
 UPDATE member_info_staging2
 SET age = CASE 
-			WHEN LENGTH(CAST(age AS CHAR)) > 2 THEN CAST(LEFT(CAST(age AS CHAR), LENGTH(CAST(age AS CHAR)) - 1) AS UNSIGNED)
-			ELSE age
-			END
+		WHEN LENGTH(CAST(age AS CHAR)) > 2 THEN CAST(LEFT(CAST(age AS CHAR), LENGTH(CAST(age AS CHAR)) - 1) AS UNSIGNED)
+		ELSE age
+		END
 ;
 
---- Spliting the full address into individual street address, city and state ---
+--- Splitting the full address into individual street addresses, cities, and states ---
 
 SELECT 
   SUBSTRING_INDEX(full_address, ',', 1) AS street_address,
@@ -303,7 +299,3 @@ SET state = 'Tejas' WHERE state = 'Tej+F823as';
 
 UPDATE member_info_staging2
 SET state = 'Tennessee' WHERE state = 'Tennesseeee';
-
-SELECT DISTINCT(city)
-FROM member_info_staging2
-ORDER BY 1;
