@@ -2,7 +2,13 @@
 
 This project involved cleaning, analyzing, and visualizing membership data for *Verdant Tennis Club*, a sports and wellness club. The goal was to uncover patterns around member demographics, job roles, geographical spread, and loyalty, then present those insights through a clean, interactive dashboard and detailed reports.
 
+## Preview
+<p float="left">
+  <img src="https://github.com/DataOla/Verdant-Tennis-Club/blob/main/Verdant.png?raw=true" alt="Dashboard" width="700"/>
+</p>
+
 ---
+
 ## Project Overview
 
 **Main Outputs:**
@@ -18,11 +24,9 @@ This project involved cleaning, analyzing, and visualizing membership data for *
 | --------------- | --------------------------------------- |
 | **SQL (MySQL)** | Data cleaning, transformation, analysis |
 | **Tableau**     | Dashboard design and visualization      |
-| **Canva**       | Layout mockups, visual cards            |
-| **Markdown**    | Documentation & report writing          |
+| **Canva**       | Layout mockups                          |
 
 ---
-
 ## Dashboard Features
 
 * Total member change year-over-year
