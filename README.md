@@ -3,7 +3,6 @@
 This project involved cleaning, analyzing, and visualizing membership data for *Verdant Tennis Club*, a sports and wellness club. The goal was to uncover patterns around member demographics, job roles, geographical spread, and loyalty, then present those insights through a clean, interactive dashboard and detailed reports.
 
 ---
-
 ## Project Overview
 
 **Main Outputs:**
@@ -35,3 +34,6 @@ This project involved cleaning, analyzing, and visualizing membership data for *
 * Clean, color-coded visuals and contextual storytelling
 
 ---
+**[View my dashboard here!](https://public.tableau.com/views/VerdantTennisClub/GREENEY?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)**
+ 
+
